@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 
 @Table(name = "Usuarios")
 @Entity(name = "Usuario")
-
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter

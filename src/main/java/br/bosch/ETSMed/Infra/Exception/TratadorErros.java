@@ -1,4 +1,4 @@
-package br.bosch.ETSMed.Infra;
+package br.bosch.ETSMed.Infra.Exception;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.ResponseEntity;
