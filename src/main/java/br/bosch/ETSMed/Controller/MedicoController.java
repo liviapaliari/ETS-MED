@@ -40,6 +40,13 @@ public class MedicoController {
         return ResponseEntity.ok(page);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity detalhar(@PathVariable int id) {
+        var medico = repository.getReferenceById(id);
+        return ResponseEntity.ok(new DadosMedico(medico));
+    }
+
+
     // @RequestBody indica que vai vir algo pelo corpo da requisição
     // Transaction para indicar que vai mexer no Banco de Dados
     // Valid para ele validar aqueles campos que colocamos @NotNull entre outras Annotations
