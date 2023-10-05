@@ -1,5 +1,7 @@
 package br.bosch.ETSMed.Controller;
 
+import br.bosch.ETSMed.Model.Consulta.DadosAgendamentoConsulta;
+import br.bosch.ETSMed.Model.Consulta.DadosDetalhamentoConsulta;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/consultas")
 public class ConsultaController {
     public ResponseEntity agendar(@RequestBody @Valid DadosAgendamentoConsulta dadosAgendamentoConsulta) {
-        return ResponseEntity.ok(new DadosDetalhamentoConsulta);
+        System.out.println(dadosAgendamentoConsulta);
+        return ResponseEntity.ok(new DadosDetalhamentoConsulta(1, 1, 1, null));
     }
 }
