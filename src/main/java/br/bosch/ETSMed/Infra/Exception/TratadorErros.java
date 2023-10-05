@@ -1,6 +1,7 @@
 package br.bosch.ETSMed.Infra.Exception;
 
 import jakarta.persistence.EntityNotFoundException;
+import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -22,5 +23,11 @@ public class TratadorErros {
 
         // Retornando não somente o erro mas uma mensagem também
         return ResponseEntity.badRequest().body(error);
+    }
+
+    // Vai tratar todos os throw new RuntimeException que a gente colocou nas classes
+    @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity tratarRegraDeNegocio(RuntimeException e) {
+        return ResponseEntity.badRequest().body(e.getMessage());
     }
 }
