@@ -38,6 +38,17 @@ class MedicoRepositoryTest {
         assertThat(medicoLivre).isNull();
     }
 
+    @Test
+    @DisplayName("Deveria devolver médico quando ele está disponível na data")
+     void escolherMedicoAleatorioLivreNaDataCenario2() {
+        var proximaSegundaAs10 = LocalDate.now().with(TemporalAdjusters.next(DayOfWeek.MONDAY))
+                .atTime(10, 0);
+
+        var medico = cadastrarMedico("Médico", "medico@etsmed.com", "123456", Especialidade.ORTOPEDIA);
+        var medicoLivre = medicoRepository.escolherMedicoAleatorioLivreNaData(Especialidade.ORTOPEDIA, proximaSegundaAs10);
+        assertThat(medicoLivre).isEqualTo(medico);
+     }
+
     private void cadastrarConsulta(Medico medico, Paciente paciente, LocalDateTime data) {
         entityManager.persist(new Consulta(0, medico, paciente, data));
     }
